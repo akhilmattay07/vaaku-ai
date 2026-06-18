@@ -1,4 +1,4 @@
-from google import genai
+import google.genai as genai
 import os, json, random
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))

@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File, Form
-from services import whisper_service, scoring_service, claude_service, supabase_service
+from services import whisper_service, scoring_service, ai_service, supabase_service
 from models.schemas import AnalyzeResponse
 
 router = APIRouter()
@@ -37,7 +37,7 @@ async def analyze(
     except Exception:
         username = "friend"
 
-    claude_resp   = claude_service.get_feedback(expected, spoken, score, mistake_names, username)
+    claude_resp   = ai_service.get_feedback(expected, spoken, score, mistake_names, username)
     feedback      = claude_resp.get("feedback", "")
     encouragement = claude_resp.get("encouragement", "")
 
