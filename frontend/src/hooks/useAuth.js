@@ -25,9 +25,9 @@ export function useAuth() {
     supabase.auth.signInWithPassword({ email, password })
 
   const signUp = (email, password) =>
-    supabase.auth.signUp({ email, password, options: {
-      emailRedirectTo: "http://localhost:5173/practice"
-    }})
+  supabase.auth.signUp({ email, password, options: {
+    emailRedirectTo: "https://vaaku-ai.vercel.app/practice"
+  }})
 
   const signOut = () => supabase.auth.signOut()
 

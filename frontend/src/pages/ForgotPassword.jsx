@@ -13,12 +13,12 @@ export default function ForgotPassword() {
     setLoading(true); setError(""); setMessage("")
 
     const { error: err } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:5173/reset-password"
-    })
+  redirectTo: "https://vaaku-ai.vercel.app/reset-password"
+})
 
     setLoading(false)
     if (err) setError(err.message)
-    else setMessage("✅ Password reset link sent! Check your email.")
+    else setMessage("Password reset link sent! Check your email.")
   }
 
   return (
