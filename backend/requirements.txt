@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-multipart
+faster-whisper
+supabase
+gtts
+python-dotenv
+pydantic
+google-generativeai
