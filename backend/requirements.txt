@@ -6,4 +6,4 @@ supabase
 gtts
 python-dotenv
 pydantic
-google-generativeai
+google-genai
