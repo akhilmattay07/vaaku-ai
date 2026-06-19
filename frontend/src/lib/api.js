@@ -1,15 +1,15 @@
 import axios from "axios"
 
-const BASE = "/api"
+const BASE = import.meta.env.VITE_API_URL || "http://localhost:8000/api"
 
 export const analyzeAudio       = (formData) =>
   axios.post(`${BASE}/analyze`, formData).then(r => r.data)
 
 export const getAudioUrl        = (text) =>
-  `/api/audio/${encodeURIComponent(text)}`
+  `${import.meta.env.VITE_API_URL || "http://localhost:8000/api"}/audio/${encodeURIComponent(text)}`
 
 export const getSlowAudioUrl    = (text) =>
-  `/api/audio-slow/${encodeURIComponent(text)}`
+  `${import.meta.env.VITE_API_URL || "http://localhost:8000/api"}/audio-slow/${encodeURIComponent(text)}`
 
 export const getProgress        = (userId) =>
   axios.get(`${BASE}/progress/${userId}`).then(r => r.data)
