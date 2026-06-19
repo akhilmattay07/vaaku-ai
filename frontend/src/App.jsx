@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useEffect } from "react"
 import Navbar         from "./components/Navbar"
 import Home           from "./pages/Home"
 import Practice       from "./pages/Practice"
@@ -11,6 +12,17 @@ import Onboarding     from "./pages/Onboarding"
 import Leaderboard    from "./pages/Leaderboard"
 
 export default function App() {
+  useEffect(() => {
+    // Ping backend every 10 minutes to keep Render awake
+    const ping = () => {
+      fetch(`${import.meta.env.VITE_API_URL?.replace("/api", "") || "http://localhost:8000"}`)
+        .catch(() => {})
+    }
+    ping() // ping immediately on load
+    const interval = setInterval(ping, 10 * 60 * 1000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <BrowserRouter>
       <div className="bg-gray-950 min-h-screen text-white">
